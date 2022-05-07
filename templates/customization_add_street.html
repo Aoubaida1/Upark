@@ -1,0 +1,156 @@
+{% extends "customization_base.html" %}
+{% block content %}
+<form action="{{ url_for('add_street2') }}" method="POST">
+  <input type="image" src="{{pic}}" class="layout" name="editor"/>
+  <input type="hidden" id="next_stage" name="next" value="{{pic}}"/>
+  <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+  <input type="hidden" id="pic_path" name="number" value="{{number}}"/>
+</form>
+
+<form action="{{ url_for('segmentation1')}}" method="POST">
+  <label class="tool-box2" for="gate">Add Street (point 1)</label><br>
+  <input class="tool-box3" type="submit" name="segment" value="Next" >
+  <input type="hidden" id="next_stage" name="next" value="{{pic}}"/>
+  <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+</form>
+{% endblock content %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1583, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="../static/css/group-34.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/globals.css" />
+  </head>
+  <body>
+  <main>
+    <input type="hidden" id="anPageName" name="page" value="group-34" />
+      <div class="group-34 screen">
+        <div class="group-33-qkOSnE">
+          <div class="dashboard-N3f4gx">
+            <div class="earning-LBZe7c">
+              <img class="rectangle-15-CiuvCp" src="../static/img/rectangle-15@1x.svg" />
+              <div class="upload-layout-CiuvCp poppins-semi-bold-black-22px">Upload <br />layout</div>
+              <div class="x1-CiuvCp poppins-medium-black-24px">1</div>
+            </div>
+            <div class="search-LBZe7c">
+              <div class="rectangle-31-KBAP5a"></div>
+            </div>
+            <div class="side-menu-LBZe7c">
+              <div class="rectangle-14-ynZAgK"></div>
+              <div class="rectangle-32-ynZAgK"></div>
+              <div class="list-menu-ynZAgK">
+                <img class="icon-24-outline-key-square-T5HeZH" src="../static/img/icon---24---outline---key-square@2x.svg" />
+                <div class="customization-T5HeZH">Customization</div>
+              </div>
+              <div class="list-menu-u2PXvH">
+                <img class="x3d-square-1-DMAQcL" src="../static/img/3d-square-1@2x.svg" />
+                <div class="dashboard-DMAQcL poppins-medium-manatee-14px">Dashboard</div>
+                <img class="chevron-right-2-DMAQcL" src="../static/img/chevron-right-2@2x.svg" />
+              </div>
+              <div class="list-menu-xJxMU4">
+                <img class="user-square-1-0K21AJ" src="../static/img/user-square-1@2x.svg" />
+                <div class="profile-0K21AJ poppins-medium-manatee-14px">Profile</div>
+                <img class="chevron-right-2-0K21AJ" src="../static/img/chevron-right-2@2x.svg" />
+              </div>
+              <div class="list-menu-EgsC3c">
+                <img class="message-question-1-dVHXOl" src="../static/img/message-question-1@2x.svg" />
+                <div class="help-dVHXOl poppins-medium-manatee-14px">Help</div>
+                <img class="chevron-right-2-dVHXOl" src="../static/img/chevron-right-2@2x.svg" />
+              </div>
+              <div class="group-31-ynZAgK">
+                <div class="customization-VvX6x7">Customization</div>
+                <img class="setting-1-VvX6x7" src="../static/img/setting-1@2x.svg" />
+              </div>
+            </div>
+            <div class="welcome-to-customiza-LBZe7c poppins-medium-black-24px">
+              <span class="span0-vdNVez poppins-medium-black-24px">Welcome to Customization Page,<br /></span
+              ><span class="span1-vdNVez">with 5 stimple steps, you will be ready to go</span
+              ><span class="span2-vdNVez poppins-medium-black-24px">&nbsp;</span>
+            </div>
+            <img class="icon-upload_arrow-LBZe7c" src="../static/img/outline---share-2@2x.svg" />
+            <div class="group-14-LBZe7c">
+              <img class="line-2-ziKS7T" src="../static/img/line-2-1@2x.svg" />
+              <img class="line-3-ziKS7T" src="../static/img/line-2-1@2x.svg" />
+            </div>
+            <div class="group-16-LBZe7c">
+              <img class="line-2-9PJEMY" src="../static/img/line-2-1@2x.svg" />
+              <img class="line-3-9PJEMY" src="../static/img/line-2-1@2x.svg" />
+              <div class="group-14-9PJEMY">
+                <img class="line-2-91xBGK" src="../static/img/line-2-1@2x.svg" />
+                <img class="line-3-91xBGK" src="../static/img/line-2-1@2x.svg" />
+              </div>
+            </div>
+            <div class="identify-gates-LBZe7c poppins-semi-bold-black-22px">Identify<br />Gates</div>
+            <img class="ellipse-11-LBZe7c" src="../static/img/ellipse-11@1x.png" />
+            <img class="ellipse-15-LBZe7c" src="../static/img/ellipse-11@1x.png" />
+            <div class="start-partitioning-LBZe7c poppins-semi-bold-black-22px">Start<br />Partitioning</div>
+            <div class="x5-LBZe7c poppins-medium-black-24px">5</div>
+            <img class="ellipse-12-LBZe7c" src="../static/img/ellipse-11@1x.png" />
+            <div class="identify-streets-LBZe7c poppins-semi-bold-black-22px">Identify<br />Streets</div>
+            <div class="x4-LBZe7c poppins-medium-black-24px">4</div>
+            <img class="ellipse-13-LBZe7c" src="../static/img/ellipse-11@1x.png" />
+            <div class="identify-slots-LBZe7c poppins-semi-bold-black-22px">Identify<br />Slots</div>
+            <div class="x3-LBZe7c poppins-medium-black-24px">3</div>
+            <img class="ellipse-14-LBZe7c" src="../static/img/ellipse-11@1x.png" />
+            <div class="rectangle-4013-LBZe7c"></div>
+          
+            <div class="edit-pane-LBZe7c poppins-semi-bold-black-22px">Edit Pane</div>
+            <form action="{{ url_for('add_street2') }}" method="POST">
+                <input type="image" src="{{pic}}" class="layout" name="editor"/>
+                <input type="hidden" id="next_stage" name="next" value="{{pic}}"/>
+                <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+                <input type="hidden" id="pic_path" name="number" value="{{number}}"/>
+              </form>
+              
+              <form action="{{ url_for('segmentation1')}}" method="POST">
+                <label class="tool-box2" for="gate">Add Street (point 1)</label><br>
+                <input class="tool-box3" type="submit" name="segment" value="Next" >
+                <input type="hidden" id="next_stage" name="next" value="{{pic}}"/>
+                <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+              </form>
+            {% if message %}
+              <div class="error">{{message}}</div>
+            {% endif %}
+            <div class="layout-details-LBZe7c poppins-semi-bold-black-22px">Layout Details</div>
+            <div class="zone-details-LBZe7c poppins-semi-bold-black-22px">Zone Details</div>
+            <div class="x2-LBZe7c poppins-medium-black-24px">2</div>
+            <div class="rectangle-4015-LBZe7c"></div>
+            <div class="rectangle-4016-LBZe7c"></div>
+            <div class="number-of-zones-LBZe7c poppins-semi-bold-black-22px">Number of zones:</div>
+            <div class="number-of-local-gates-LBZe7c poppins-semi-bold-black-22px">Number of local gates:</div>
+            <div class="total-parking-slots-LBZe7c poppins-semi-bold-black-22px">Total parking slots:</div>
+            <div class="cost-LBZe7c poppins-semi-bold-black-22px">Cost:</div>
+            <div class="number-of-parking-slots-LBZe7c poppins-semi-bold-black-22px">Number of parking slots:</div>
+            <div class="size-percentage-LBZe7c poppins-semi-bold-black-22px">Size percentage:</div>
+            <img class="image-2-75YMUw" src="../static/img/image-2-1@2x.png" />
+          </div>
+          <div class="minimize-menu-N3f4gx">
+            <div class="group-32-HEqIae">
+              <div class="side-menu-QrqIOD">
+                <div class="rectangle-14-RQIfXn"></div>
+                <div class="rectangle-32-RQIfXn"></div>
+                <img class="list-menu-RQIfXn" src="../static/img/list-menu@2x.svg" />
+                <img class="list-menu-tuq4QY" src="../static/img/3d-square-1@2x.svg" />
+                <img class="list-menu-ThF5jQ" src="../static/img/user-square-1@2x.svg" />
+                <img class="list-menu-NVLxfV" src="../static/img/message-question-1@2x.svg" />
+                <img class="group-31-RQIfXn" src="../static/img/group-31@2x.svg" />
+              </div>
+            </div>
+            <img class="image-1-HEqIae" src="../static/img/image-2-1@2x.png" />
+          </div>
+        </div>
+        <div class="list-menu-qkOSnE">
+          <div class="logout-XClW72">Logout</div>
+          <img class="chevron-right-2-XClW72" src="../static/img/chevron-right-2@2x.svg" />
+        </div>
+      </div>
+  </main>
+  </body>
+</html>
+

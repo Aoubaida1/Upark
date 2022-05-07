@@ -1,0 +1,15 @@
+{% extends "customization_base.html" %}
+{% block content %}
+<form action="{{ url_for('segmentation2') }}" method="POST">
+  <input type="image" src="{{pic}}" class="layout" name="editor"/>
+  <input type="hidden" id="corners" name="corners" value="{{corners}}"/>
+  <input type="hidden" id="first time" name="first time" value="{{first_time}}"/><br>
+  <label for="zone_name">Enter zone name</label><br>
+  <input type="text" id="zone_name" name="zone_name"><br>
+</form>
+
+<form action="{{ url_for('final') }}" method="POST">
+  <label for="gate">Add zone (point 1)</label><br>
+  <input type="submit" name="submit" value="submit">
+</form>
+{% endblock content %}

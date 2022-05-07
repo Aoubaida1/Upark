@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block content %} 
+{% if parking: %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">View and Add your images</h1>
+        <p class="lead text-muted">Upload your image file here and view the result bellow. </p>
+        <!-- <p>
+          <a href="#" class="btn btn-primary my-2">Main call to action</a>
+          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p> -->
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="py-5 text-center container">
+
+    <h3 class="fw-light">Upload the image here</h3>
+
+  <form action="{{url_for('ads')}}" method="POST" enctype="multipart/form-data" class="input-group">
+    <input type="file" class="form-control" name= "file_name" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" multiple>
+    <input class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">
+    <div class="form-check input-group py-2">
+
+      <input class="form-check-input me-3" name= "checked" type="checkbox" value="yes" id="flexCheckDefault">
+      <label class="form-check-label me-3" for="flexCheckDefault">
+        Replace
+      </label>
+    </div>
+  </form>
+</section>
+
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+        {%for i,x in image%}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src= {{i}} class="card-img-top">
+            <div class="card-body">
+                <p> {{x}} </p>
+              <!-- <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-danger">Delet</button>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+{% else: %}
+<section class="py-5 text-center container">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <span class="fw-light"><h1>Create a new parking</h1></span>
+        <span class="fw-light"><a href="{{url_for('customization')}}"><h1> here </h1></a></span>
+        <span class="fw-light"><h1>to add authorized vehicles</h1></span>
+    </div>
+</section>
+{% endif %}
+
+{% endblock content %}

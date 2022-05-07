@@ -1,0 +1,25 @@
+{% extends "customization_base.html" %}
+{% block content %}
+<form method="POST" action="" class="editor" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  <div>
+      {{ form.picture.label() }}
+      {{ form.picture() }}   
+  </div>
+  <div>
+    {{ form.parking_name.label() }}
+    {{ form.parking_name() }}   
+  </div>
+  <div class="form-group">
+    {{ form.submit() }}
+  </div>
+</form>
+
+<img src="{{pic}}" class="layout" />
+<form action="{{ url_for('add_gate') }}" method="POST" >
+  <input class="tool-box3" type="submit" name="add_gate" value="Start" >
+  <input type="hidden" id="next_stage" name="next" value="{{pic}}"/>
+  <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+</form>
+</section>
+{% endblock content %}

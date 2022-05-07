@@ -1,0 +1,11 @@
+{% extends "customization_base.html" %}
+{% block content %}
+<form action="{{ url_for('add_first_street2') }}" method="POST">
+  <input type="image" src="{{pic}}" class="layout" name="editor"/>
+  <input type="hidden" id="next_stage" name="next" value="{{pic}}"/>
+  <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+</form>
+<div>
+  Add Street (first point)
+</div>
+{% endblock content %}

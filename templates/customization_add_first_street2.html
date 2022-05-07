@@ -1,0 +1,46 @@
+{% extends "customization_base.html" %}
+{% block content %}
+<div hidden id="x">{{x}}</div>
+<div hidden id="y">{{y}}</div>
+<div class="selection-rec" id="selection" ></div>
+
+<form action="{{ url_for('add_street') }}" method="POST">
+  <input type="image" id="img-border"src="{{pic}}" name="editor_first"/>
+  <input type="hidden" id="next_stage" name="next" value="{{pic}}"/>
+  <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+  <input type="hidden" id="x2" name="x2" value="{{x}}"/>
+  <input type="hidden" id="y2" name="y2" value="{{y}}"/>
+</form>
+<div>
+  Add Street (Second Point)
+</div>
+<script>
+  
+  var div = document.getElementById('selection'), x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+  var img = document.getElementById('img-border');
+  var x = Number(document.getElementById('x').textContent) + 40;
+  var y = Number(document.getElementById('y').textContent) + 74;
+
+function reCalc() { //This will restyle the div
+  var x3 = Math.min(x,x2); //Smaller X
+  var x4 = Math.max(x,x2); //Larger X
+  var y3 = Math.min(y,y2); //Smaller Y
+  var y4 = Math.max(y,y2); //Larger Y
+  
+  
+      div.style.left = x3 + 'px';
+      div.style.top = y3 + 'px';
+      div.style.width = x4 - x3 + 'px';
+      div.style.height = y4 - y3 + 'px';
+
+}
+
+onmousemove = function(e) {
+  x2 = e.clientX; //Update the current position X
+  y2 = e.clientY; //Update the current position Y
+  div.hidden = 0;
+  reCalc();
+};
+
+</script>
+{% endblock content %}

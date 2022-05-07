@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block header %} 
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+{% endblock header %}
+
+{% block content %}
+<section class="py-5 text-center container">
+{% if parking: %}
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">View your dashboard</h1>
+        <p class="lead text-muted">You can view the overall statistics of the parking here, below you can select the specific zone to show custom statistics</p>
+        <!-- <p>
+          <a href="#" class="btn btn-primary my-2">Main call to action</a>
+          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p> -->
+      </div>
+    </div>
+  </section>
+
+
+
+<div class="container">
+  <div class="row  bg-light bg-gradient">
+    <div class="col-8 fw-normal h3 py-5 text-dark px-5">
+      The parking capacity
+      <p class="lead text-muted py-3"> parking capacity is saved and updated every 10 min </p>
+    </div>
+    <div class="col-4">
+      <iframe style="background: #ffffff00" width="300" height="300" src={{capacity}}></iframe>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<section class="py-5 text-center container bg-light bg-gradient">
+  <div class="row py-lg-5 ">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h3 class="fw-normal text-dark"> Car Entrance chart</h3>
+      <p class="lead text-muted">You can see as the car enter or exit the parking how the over all occupancy is change in every event the chart will updated every 10 min</p>
+    </div>
+    <iframe style="background: #ffffff00" width="900" height="500" src={{entrance}}></iframe>
+  </div>
+</section>
+
+<br>
+<br>
+<br>
+
+<section class="py-5 text-center container bg-light bg-gradient">
+  <div class="row py-lg-5 ">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h3 class="fw-normal text-dark"> Car Entrance Table</h3>
+      <p class="lead text-muted">You can see as the car enter or exit the parking how the over all occupancy is change in every event the chart will updated every 10 min</p>
+    </div>
+    <div class="mx-auto">
+    <iframe style="background: #ffffff00; " width="880" height="1050" src={{table}}></iframe>
+  </div>
+  </div>
+</section>
+
+
+<br>
+<br>
+<br>
+
+
+
+
+<section class="py-5 text-center container bg-light bg-gradient" id="predict">
+  <div class="row py-lg-5 ">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h3 class="fw-normal text-dark"> Car Occupancy Prediction </h3>
+    </div>
+  </div>
+  <div class="row px-5">
+
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <p class="lead text-muted">Select the date and view the predicted occupancy for 24h</p>
+    </div>
+
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <form class="input-group" method="POST">
+    <input  class="form-control" data-date-format="dd/mm/yyyy" id="datepicker" name="date">
+    <!-- <input type="submit"> -->
+    <button class="btn btn-outline-secondary" type="submit" id="button-addon1">Submit</button>
+
+      </form>
+    </div>
+  </div>
+{% else: %}
+<div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <span class="fw-light"><h1>Create a new parking</h1></span>
+      <span class="fw-light"><a href="{{url_for('customization')}}"><h1> here </h1></a></span>
+      <span class="fw-light"><h1>to view its statistics</h1></span>
+</section>
+{% endif %}
+
+
+{% endblock content %}

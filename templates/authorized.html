@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if parking: %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">View and Add Authorized Car</h1>
+      <p class="lead text-muted">Upload Text file with the authorized car plate here and view the result bellow. </p>
+      <!-- <p>
+        <a href="#" class="btn btn-primary my-2">Main call to action</a>
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+      </p> -->
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="py-5 text-center container">
+
+  <h3 class="fw-light">Upload Text file here</h3>
+
+<form action="{{url_for('authorized')}}" method="POST" enctype="multipart/form-data" class="input-group">
+  <input type="file" class="form-control" name= "vip_name" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" multiple>
+  <input class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">
+</form>
+<div class="form-check input-group py-2">
+  <label class="form-check-label me-3  text-danger" for="flexCheckDefault">
+    {{msg}}
+  </label>
+</div>
+</section>
+
+
+<!-- {%if vip_list%}
+<div class="container">
+  <table class="table table-striped  table-light table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Car Plate Number</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for x in vip_list%}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{x}}</td>
+      </tr>
+      {%endfor%}
+  
+  </table>
+</div>
+
+{% endif %} -->
+
+
+{%if vip_list%}
+<div class="container">
+  <div class="row py-lg-5 ">
+  <table class="table table-striped  table-light table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Car Plate Number</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for x in vip_list%}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{x}}</td>
+      </tr>
+      {%endfor%}
+  
+  </table>
+</div>
+</div>
+
+    {% endif %}
+{% else: %}
+<section class="py-5 text-center container">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <span class="fw-light"><h1>Create a new parking</h1></span>
+        <span class="fw-light"><a href="{{url_for('customization')}}"><h1> here </h1></a></span>
+        <span class="fw-light"><h1>to add authorized vehicles</h1></span>
+    </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

@@ -1,0 +1,212 @@
+{% extends "layout.html" %}
+
+{% block header %} 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+{% endblock header %}
+
+
+{% block content %} 
+{% if parking: %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">View your Statistics </h1>
+        <p class="lead text-muted">You can view the overall statistics of the parking here, you can see the history of occupancy and the prediction of the future </p>
+        <!-- <p>
+          <a href="#" class="btn btn-primary my-2">Main call to action</a>
+          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p> -->
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="py-5 text-center container bg-light bg-gradient" id="predict">
+    <div class="row py-lg-5 ">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h3 class="fw-normal text-dark"> The Parking Occupancy Prediction </h3>
+      </div>
+    </div>
+    <div class="row px-5">
+  
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <p class="lead text-muted">Select the date and view the predicted occupancy for 24h</p>
+      </div>
+  
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <form class="input-group" method="POST">
+      <input  class="form-control" data-date-format="dd/mm/yyyy" id="datepicker" name="date">
+      <!-- <input type="submit"> -->
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon1">Submit</button>
+        </form>
+      </div>
+      <canvas id="myChart" style="width:100%;max-width:1200px;height: 100px;"></canvas>
+
+    </div>
+  
+  </section>
+
+
+
+<br>
+<br>
+<br>
+
+<section class="py-5 text-center container bg-light bg-gradient">
+    <div class="row py-lg-5 ">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h3 class="fw-normal text-dark"> The parking Occupancy for the last 24 hour</h3>
+        <p class="lead text-muted">You can see the mean parking occupancy for the last 24 hours. The chart will be updated every 1 hour</p>
+      </div>
+      <iframe style="background: #ffffff00" width="900" height="500" src={{last1h}}></iframe>
+    </div>
+  </section>
+  
+  <br>
+  <br>
+  <br>
+
+  <section class="py-5 text-center container bg-light bg-gradient">
+    <div class="row py-lg-5 ">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h3 class="fw-normal text-dark"> The parking Occupancy for the last week</h3>
+        <p class="lead text-muted">You can see the mean parking occupancy for the last week starting from yesterday. The chart will be updated every day</p>
+      </div>
+      <iframe style="background: #ffffff00" width="900" height="500" src={{last7d}}></iframe>
+    </div>
+  </section>
+  
+  <br>
+  <br>
+  <br>
+
+
+  <section class="py-5 text-center container bg-light bg-gradient">
+    <div class="row py-lg-5 ">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h3 class="fw-normal text-dark"> The mean parking occupancy for 24 hour</h3>
+        <p class="lead text-muted">You can see the mean parking occupancy for the 24 hours using the history of the parking for 7 years. The chart will be updated every 1 hour</p>
+      </div>
+      <iframe style="background: #ffffff00" width="900" height="500" src={{hour}}></iframe>
+    </div>
+  </section>
+  
+  <br>
+  <br>
+  <br>
+
+
+
+  <section class="py-5 text-center container bg-light bg-gradient">
+    <div class="row py-lg-5 ">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h3 class="fw-normal text-dark"> The mean parking Occupancy for the last week</h3>
+        <p class="lead text-muted">You can see the mean parking occupancy for the weekday using the history of the parking for 7 years. The chart will be updated every day</p>
+      </div>
+      <iframe style="background: #ffffff00" width="900" height="500" src={{weekday}}></iframe>
+    </div>
+  </section>
+  
+  <br>
+  <br>
+  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+  </script>
+
+
+<script>   
+    new Chart("myChart", {
+      type: "bar",
+      data: {
+        labels: {{h | safe}},
+        datasets: [{
+          backgroundColor: {{val | safe}},
+          data: {{vx | safe}}
+        }]
+      },
+      options: {
+        scales: {
+        yAxes: [{
+            ticks: {
+                display: false,
+                max: 1
+            }
+        }]
+    },
+        legend: {display: false},
+        title: {
+          display: false,
+          text: "Occupancy Prediction"
+        }
+        
+      }
+    });
+    </script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style type="text/css">
+        /* solution 1:
+        .datepicker {
+            font-size: 0.875em;
+        }
+        /* solution 2: the original datepicker use 20px so replace with the following:*/
+        
+        .datepicker td, .datepicker th {
+            width: 1.5em;
+            height: 1.5em;
+        }
+        
+    </style>
+<script type="text/javascript">
+    $('#datepicker').datepicker({
+        weekStart: 1,
+        daysOfWeekHighlighted: "6,0",
+        autoclose: true,
+        todayHighlight: true,
+    });
+    // $('#datepicker').datepicker("setDate", new Date());
+</script>
+
+{% else: %}
+<section class="py-5 text-center container">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <span class="fw-light"><h1>Create a new parking</h1></span>
+        <span class="fw-light"><a href="{{url_for('customization')}}"><h1> here </h1></a></span>
+        <span class="fw-light"><h1>to add authorized vehicles</h1></span>
+    </div>
+</section>
+{% endif %}
+
+{%endblock content%}

@@ -1,0 +1,15 @@
+{% extends "customization_base.html" %}
+{% block content %}
+<form action="{{ url_for('add_intersection') }}" method="POST">
+  <input type="image" src="{{pic}}" class="layout" name="editor"/>
+  <input type="hiddmen" id="next_stage" name="next" value="{{pic}}"/>
+  <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+</form>
+
+<form action="{{ url_for('segmentation1')}}" method="POST">
+  <label class="tool-box2" for="gate">Add intersection</label><br>
+  <input class="tool-box3" type="submit" name="segment" value="Next" >
+  <input type="hidden" id="next_stage" name="next" value="{{pic}}"/>
+  <input type="hidden" id="pic_path" name="path" value="{{path}}"/>
+</form>
+{% endblock content %}
